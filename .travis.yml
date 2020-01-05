@@ -1,0 +1,12 @@
+sudo: required #sudo is super user level permissions
+language: generic 
+services:
+    - docker 
+
+before_install:
+    - docker build -t bruno1990/docker-react -f Dockerfile.dev . #any tag could be written
+
+script:
+    - docker run -e CI=true bruno1990/docker-react npm run test #-e CI=true is what you have to add in the code so npm test can quit instead of waiting for user input
+    
+    
